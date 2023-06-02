@@ -9,7 +9,7 @@ export default async function handler(request, response) {
     from: senderAddress,
     reply_to: body.from,
     subject: "New Form Submission",
-    html: `<p>Contact Name:${body.name}</p><p>${body.message}</p>` || "[No message]",
+    html: `<p>Name:${body.name}</p><p>Email:${body.from}</p>` || "[No message]",
   }
   try {
     await sgMail.send(msg).then(response => console.log(response))
