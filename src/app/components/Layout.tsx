@@ -1,6 +1,6 @@
-import './globals.css'
+import './styles/globals.css'
 import { Inter } from 'next/font/google'
-import { ParallaxProvider } from 'react-scroll-parallax';
+import Head from "next/head"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -8,16 +8,17 @@ export const metadata = {
   description: 'Digital Agency in West Perth',
 }
 
-export default function RootLayout({
+export default function Layout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
     <html lang="en">
-    <head>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    </head>
+      <Head>
+
+      </Head>
+    
       <body className={inter.className}><div id="my-root">{children}</div></body>
     </html>
   )
