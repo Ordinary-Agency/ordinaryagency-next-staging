@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import Accordion from '../app/components/Accordion';
 import Header  from '../app/components/Header';
+import Layout from '@/app/components/Layout';
 import Footer from '../app/components/Footer';
 import { useInView } from 'react-intersection-observer';
 import { Parallax } from 'react-parallax';
@@ -31,18 +32,10 @@ export default function Home() {
     triggerOnce: true,
     threshold: 0.1,
   });
-
-
-
- 
-
-
-  const image1 = "/images/frest2.png";
+ const image1 = "/images/frest2.png";
   return (
     <>
-      <Header/>
       <main id="my-root" className="flex flex-col min-h-screen bg-white items-center justify-start pt-28 md:pt-20 p-4 sm:p-6 md:p-8 lg:p-12 lg:py-0 xl:p-28 bg-transparent text-black">
-
         <Parallax bgImage={image1} strength={500}>
           <div className="flex flex-col hero md:flex-row justify-center items-center text-4xl md:text-8xl font-extrabold my-0 h-screen bg-white text-black mt-8 md:mt-0"
             style={{
@@ -129,7 +122,6 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-        <Footer />
       </main>
     </>
   );
