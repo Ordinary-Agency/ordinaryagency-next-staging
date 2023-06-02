@@ -1,6 +1,4 @@
-import React from 'react';
 import Logo from './Logo';
-
 const Footer = () => {
   return (
     <footer className="w-full bg-white text-black py-6">

@@ -10,6 +10,7 @@ import { FiPhone } from 'react-icons/fi';
 import { useInView } from 'react-intersection-observer';
 import Head from "next/head"
 import { Parallax } from 'react-parallax';
+import ContactForm from './components/ContactForm';
 const variants = {
   hidden: { opacity: 0, x: -100 },
   visible: { opacity: 1, x: 0 },
@@ -95,7 +96,7 @@ export default function Home() {
       <meta property="og:title" content="Ordinary Agency" key="title" />
       <meta name="description" content="Digital Agency in West Perth" key="desc" />
     </Head>
-    <main id="#my-root" className="flex flex-col min-h-screen bg-white items-center justify-start pt-28 md:pt-20 p-4 sm:p-6 md:p-8 lg:p-12 lg:py-0 xl:p-28 bg-transparent text-black">
+    <main className="flex flex-col min-h-screen bg-white items-center justify-start pt-28 md:pt-20 p-4 sm:p-6 md:p-8 lg:p-12 lg:py-0 xl:p-28 bg-transparent text-black">
       <header className={`fixed top-0 right-0 bg-transparent p-4 md:p-8 w-full z-10 ${isScrolled ? '' : ''}`}>
         <div className="flex items-center justify-between w-full">
           <Logo className="w-12 h-12 md:w-16 md:h-16 object-contain" />
@@ -124,17 +125,7 @@ export default function Home() {
         style={customStyles} // apply the custom styles
       >
         <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
-        <form className="space-y-4">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name:</label>
-            <input id="name" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" type="text" name="name" />
-          </div>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email:</label>
-            <input id="email" className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" type="email" name="email" />
-          </div>
-          <button type="submit" className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit</button>
-        </form>
+        <ContactForm/>
         <button onClick={closeModal} className="mt-4 w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Close</button>
       </Modal>
 
