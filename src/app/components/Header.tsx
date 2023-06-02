@@ -3,6 +3,7 @@ import Logo from './Logo';
 import { useState,useEffect } from 'react';
 import Modal from 'react-modal';
 import ContactForm from './ContactForm';
+
 export default function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false)

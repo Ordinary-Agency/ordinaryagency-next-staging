@@ -1,7 +1,7 @@
 import Logo from './Logo';
 const Footer = () => {
   return (
-    <footer className="w-full bg-white text-black py-6">
+    <footer className="w-full bg-white text-black py-6 px-4 lg:px-8">
       <div className="flex justify-between items-center">
         <Logo className="w-12 h-12 md:w-16 md:h-16 object-contain" />
         <div className="text-sm">
