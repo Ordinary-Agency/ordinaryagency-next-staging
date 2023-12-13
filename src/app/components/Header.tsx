@@ -3,9 +3,12 @@ import Logo from './Logo';
 import { useState,useEffect } from 'react';
 import Modal from 'react-modal';
 import ContactForm from './ContactForm';
+
 export default function Header() {
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false)
+
   useEffect(() => {
     const handleScroll = () => {
       const show = window.scrollY > 50;
@@ -18,11 +21,13 @@ export default function Header() {
       Modal.setAppElement('#my-root')
 
       window.addEventListener('scroll', handleScroll);
+
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };
     }
   }, [isScrolled]);
+  
   const buttonClass = isScrolled ? 'bg-white text-black border-2 border-black' : 'bg-black text-white border-2 border-black';
 
   const openModal = () => {
@@ -32,6 +37,7 @@ export default function Header() {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+    console.log(isScrolled)
   const customStyles = {
     content: {
       top: '50%',
@@ -53,10 +59,11 @@ export default function Header() {
       zIndex: 10000,
     },
   };
+  console.log(isScrolled)
   return (
     <header className={`fixed top-0 right-0 bg-transparent p-4 md:p-8 w-full z-10`}>
     <div className="flex items-center justify-between w-full">
-      <Logo className="w-12 h-12 md:w-16 md:h-16 object-contain" />
+      <Logo className="w-12 h-12 md:w-16 md:h-16 object-contain" isScrolled={isScrolled} />
       <div className="md:flex items-center">
         <div className="flex items-center justify-end md:mr-4">
           <FiPhone />

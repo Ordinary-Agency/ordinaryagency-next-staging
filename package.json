@@ -11,11 +11,10 @@
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@sendgrid/mail": "^7.7.0",
-    "@types/node": "20.2.4",
-    "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
     "framer-motion": "^10.12.16",
+    "html-react-parser": "^5.0.7",
     "next": "13.4.4",
     "postcss": "8.4.23",
     "react": "18.2.0",
@@ -27,10 +26,12 @@
     "react-parallax": "^3.5.1",
     "react-scroll-parallax": "^3.4.2",
     "react-spring": "^9.7.1",
-    "tailwindcss": "3.3.2",
-    "typescript": "5.0.4"
+    "tailwindcss": "3.3.2"
   },
   "devDependencies": {
-    "@types/react-modal": "^3.16.0"
+    "@types/node": "20.10.4",
+    "@types/react": "18.2.43",
+    "@types/react-modal": "^3.16.0",
+    "typescript": "5.3.3"
   }
 }
