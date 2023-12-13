@@ -1,4 +1,4 @@
-"use client"
+import Head from 'next/head';
 import fs from 'fs'
 import path from 'path'
 import { motion } from 'framer-motion';
@@ -9,8 +9,158 @@ const variants = {
   hidden: { opacity: 0, x: -100 },
   visible: { opacity: 1, x: 0 },
 };
+const jsonSchema = {
+  "@context": "http://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Ordinary Agency",
+  "image": "https://ordinaryagency.com.au/images/oa-brand-larger.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "236 Railway Parade",
+    "addressLocality": "Perth",
+    "addressRegion": "WA",
+    "postalCode": "6005",
+    "addressCountry": "Australia"
+  },
+  "description": "Offering online design & marketing services to businesses in Perth and wider Australia",
+  "url": "https://ordinaryagency.com.au",
+  "telephone": "+610899308081",
+  "email": "hello@ordinaryagency.com.au",
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Perth"
+    },
+    {
+      "@type": "State",
+      "name": "Western Australia"
+    },
+    {
+      "@type": "Country",
+      "name": "Australia"
+    },
+  ],
+  "foundingDate": "22-09-11",
+  "employee": [
+    {
+      "@type": "Person",
+      "name": "Employee Name",
+      "jobTitle": "Employee Job Title",
+      "worksFor": "Your Agency Name"
+    }
+  ],
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Web Development"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Perth"
+        },
+        {
+          "@type": "Country",
+          "name": "Australia"
+        },
+      ],
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Search Engine Optimization"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Perth"
+        },
+        {
+          "@type": "State",
+          "name": "Western Australia"
+        },
+        {
+          "@type": "Country",
+          "name": "Australia"
+        },
+      ],
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Online Advertising Management"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Perth"
+        },
+        {
+          "@type": "State",
+          "name": "Western Australia"
+        },
+        {
+          "@type": "Country",
+          "name": "Australia"
+        },
+      ],
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "OOH Media Management"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Perth"
+        },
+        {
+          "@type": "State",
+          "name": "Western Australia"
+        },
+        {
+          "@type": "Country",
+          "name": "Australia"
+        },
+      ],
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/ordinaryagency/",
+    "https://au.linkedin.com/company/ordinaryagencyseo",
+  ]
+}
+  // "aggregateRating": {
+  //   "@type": "AggregateRating",
+  //   "ratingValue": "Your Agency Rating",
+  //   "reviewCount": "Number of Reviews"
+  // },
+  // "review": [
+  //   {
+  //     "@type": "Review",
+  //     "author": {
+  //       "@type": "Person",
+  //       "name": "Reviewer's Name"
+  //     },
+  //     "datePublished": "Review Date",
+  //     "description": "Review Description",
+  //     "reviewRating": {
+  //       "@type": "Rating",
+  //       "bestRating": "5",
+  //       "worstRating": "1",
+  //       "ratingValue": "Rating Given By Reviewer"
+  //     }
+  //   }
+  //   // ... Add more reviews as needed
+  // ],
 
-export default function Home({data}) {
+export default function Home({ data }) {
   const dataTest = data
   console.log(dataTest)
   const { ref: refAbout, inView: inViewAbout } = useInView({
@@ -35,6 +185,12 @@ export default function Home({data}) {
 
   const image1 = "/images/frest2.png";
   return (
+    <>
+      <Head>
+        <title>Ordinary Agency</title>
+        <meta name="description" content="Web development & marketing agency serving clients in Perth and interstate." />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonSchema) }} />
+      </Head>
       <main className="flex flex-col min-h-screen bg-white items-center justify-start pt-28 md:pt-20 p-4 sm:p-6 md:p-8 lg:p-12 lg:py-0 xl:p-28 bg-transparent text-black">
         <Parallax bgImage={image1} strength={500}>
           <div className="flex flex-col hero md:flex-row justify-center font-extrabold my-0 h-screen bg-white text-black mt-8 md:mt-0"
@@ -51,15 +207,15 @@ export default function Home({data}) {
           >
             <h1 className='text-3xl md:text-5xl text-center relative top-[20%] text-black'>
               <motion.span
-                style={{ 
+                style={{
                   fontFamily: "'Poppins', sans-serif",
-                  paddingRight:'5px', 
-                 }}
+                  paddingRight: '5px',
+                }}
                 initial={{ opacity: 0, x: -100 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1 }}
               >
-                Experience a New Standard
+                Experience the New Standard
               </motion.span>
               <motion.span
                 style={{ fontFamily: "'Poppins', sans-serif" }}
@@ -132,11 +288,12 @@ export default function Home({data}) {
           </div>
         </div>
       </main>
+    </>
   );
 }
 
 export async function getStaticProps() {
-  const filePath = path.join(process.cwd(),'src', 'data','index','serviceCards.json');
+  const filePath = path.join(process.cwd(), 'src', 'data', 'index', 'serviceCards.json');
   const jsonData = fs.readFileSync(filePath, 'utf8');
   const data = JSON.parse(jsonData);
   return {
