@@ -28,7 +28,7 @@ export default function Header() {
     }
   }, [isScrolled]);
   
-  const buttonClass = isScrolled ? 'bg-white text-black border-2 border-black' : 'bg-black text-white border-2 border-black';
+  const buttonClass = isScrolled ? 'bg-black text-white border-2 border-black' : 'bg-white text-black border-2 border-black';
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -37,7 +37,7 @@ export default function Header() {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-    console.log(isScrolled)
+
   const customStyles = {
     content: {
       top: '50%',
@@ -59,7 +59,7 @@ export default function Header() {
       zIndex: 10000,
     },
   };
-  console.log(isScrolled)
+
   return (
     <header className={`fixed top-0 right-0 bg-transparent p-4 md:p-8 w-full z-10`}>
     <div className="flex items-center justify-between w-full">

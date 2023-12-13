@@ -3,30 +3,30 @@
         {
             "title":"Lead Generation",
             "description":"There are many ways to drive & convert traffic on your website, we can help you find solutions that fit your business goals",
-            "sellingPoints":[
-                "scale"
-            ]
+            "linkTo": "https://ordinaryagency.com.au/seo-perth",
+            "serviceImg":"/images/services/exponential-growth.svg",
+            "sellingPoint":"grow"
         },
         {
             "title":"Web Hosting & Domain Management",
             "description":"Keep your online presence secure with our unbeatable prices",
-            "sellingPoints":[
-                "existing"
-            ]
+            "linkTo": "https://ordinaryagency.com.au/seo-perth",
+            "serviceImg":"/images/services/hosting.svg",
+            "sellingPoint":"grow"
         },
         {
-            "title":"Marketing & Business Automation",
+            "title":"Marketing & Reputation Management",
             "description":"Remove the headaches and get the most from your customer connections by leveraging our managed automation services",
-            "sellingPoints":[
-                "scale"
-            ]
+            "linkTo": "https://ordinaryagency.com.au/seo-perth",
+            "serviceImg":"/images/services/marketing.svg",
+            "sellingPoint":"grow"
         },
         {
-            "title":"Custom Websites",
+            "title":"Custom Online Solutions",
             "description":"Our developers boast years of experience and are ready to help you realise your new online presence.",
-            "sellingPoints":[
-                "existing"
-            ]
+            "linkTo": "https://ordinaryagency.com.au/seo-perth",
+            "serviceImg":"/images/services/bullseye-arrow.svg",
+            "sellingPoint":"build"   
         }
     ]
 }

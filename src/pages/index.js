@@ -9,133 +9,8 @@ const variants = {
   hidden: { opacity: 0, x: -100 },
   visible: { opacity: 1, x: 0 },
 };
-const jsonSchema = {
-  "@context": "http://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Ordinary Agency",
-  "image": "https://ordinaryagency.com.au/images/oa-brand-larger.jpg",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "236 Railway Parade",
-    "addressLocality": "Perth",
-    "addressRegion": "WA",
-    "postalCode": "6005",
-    "addressCountry": "Australia"
-  },
-  "description": "Offering online design & marketing services to businesses in Perth and wider Australia",
-  "url": "https://ordinaryagency.com.au",
-  "telephone": "+610899308081",
-  "email": "hello@ordinaryagency.com.au",
-  "areaServed": [
-    {
-      "@type": "City",
-      "name": "Perth"
-    },
-    {
-      "@type": "State",
-      "name": "Western Australia"
-    },
-    {
-      "@type": "Country",
-      "name": "Australia"
-    },
-  ],
-  "foundingDate": "22-09-11",
-  "employee": [
-    {
-      "@type": "Person",
-      "name": "Employee Name",
-      "jobTitle": "Employee Job Title",
-      "worksFor": "Your Agency Name"
-    }
-  ],
-  "makesOffer": [
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Web Development"
-      },
-      "areaServed": [
-        {
-          "@type": "City",
-          "name": "Perth"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        },
-      ],
-    },
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Search Engine Optimization"
-      },
-      "areaServed": [
-        {
-          "@type": "City",
-          "name": "Perth"
-        },
-        {
-          "@type": "State",
-          "name": "Western Australia"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        },
-      ],
-    },
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Online Advertising Management"
-      },
-      "areaServed": [
-        {
-          "@type": "City",
-          "name": "Perth"
-        },
-        {
-          "@type": "State",
-          "name": "Western Australia"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        },
-      ],
-    },
-    {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "OOH Media Management"
-      },
-      "areaServed": [
-        {
-          "@type": "City",
-          "name": "Perth"
-        },
-        {
-          "@type": "State",
-          "name": "Western Australia"
-        },
-        {
-          "@type": "Country",
-          "name": "Australia"
-        },
-      ],
-    }
-  ],
-  "sameAs": [
-    "https://www.instagram.com/ordinaryagency/",
-    "https://au.linkedin.com/company/ordinaryagencyseo",
-  ]
-}
+
+
   // "aggregateRating": {
   //   "@type": "AggregateRating",
   //   "ratingValue": "Your Agency Rating",
@@ -161,13 +36,10 @@ const jsonSchema = {
   // ],
 
 export default function Home({ data }) {
-  const dataTest = data
-  console.log(dataTest)
   const { ref: refAbout, inView: inViewAbout } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-
   const { ref: refTeam, inView: inViewTeam } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -182,6 +54,75 @@ export default function Home({ data }) {
     triggerOnce: true,
     threshold: 0.1,
   });
+  const jsonSchema = {
+    "@context": "http://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Ordinary Agency",
+    "image": "https://ordinaryagency.com.au/images/oa-brand-larger.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "236 Railway Parade",
+      "addressLocality": "Perth",
+      "addressRegion": "WA",
+      "postalCode": "6005",
+      "addressCountry": "Australia"
+    },
+    "description": "Offering online design & marketing services to businesses in Perth and wider Australia",
+    "url": "https://ordinaryagency.com.au",
+    "telephone": "+610899308081",
+    "email": "hello@ordinaryagency.com.au",
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Perth"
+      },
+      {
+        "@type": "State",
+        "name": "Western Australia"
+      },
+      {
+        "@type": "Country",
+        "name": "Australia"
+      },
+    ],
+    "foundingDate": "22-09-11",
+    "employee": [
+      {
+        "@type": "Person",
+        "name": "Employee Name",
+        "jobTitle": "Employee Job Title",
+        "worksFor": "Your Agency Name"
+      }
+    ],
+    "makesOffer": (data) => 
+      data.map( card => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": card.title,
+          "description": card.description
+        },
+        "logo":`https://ordinaryagency.com.au${card.serviceImg}`,
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Perth"
+          },
+          {
+            "@type": "State",
+            "name": "Western Australia"
+          },
+          {
+            "@type": "Country",
+            "name": "Australia"
+          },
+        ],
+      })),
+    "sameAs": [
+      "https://www.instagram.com/ordinaryagency/",
+      "https://au.linkedin.com/company/ordinaryagencyseo",
+    ]
+  }
 
   const image1 = "/images/frest2.png";
   return (
@@ -205,7 +146,7 @@ export default function Home({ data }) {
               marginTop: '-200px',
             }}
           >
-            <h1 className='text-3xl md:text-5xl text-center relative top-[20%] text-black'>
+            <h1 className='text-3xl md:text-5xl text-center relative top-[20%] max-h-[4rem] text-black'>
               <motion.span
                 style={{
                   fontFamily: "'Poppins', sans-serif",
@@ -226,6 +167,22 @@ export default function Home({ data }) {
                 in Digital Enterprise
               </motion.span>
             </h1>
+            <div className='cards-container flex flex-row flex-wrap justify-center'>
+              {data.map( card => 
+                <div className='w-full md:w-1/2'>
+                  <Image 
+                    src={card.serviceImg}
+                    height={100}
+                    width={100}
+                  />
+                  <div className='card-text'>
+                    <h3>{card.title}</h3>
+                    <p>{card.description}</p>
+                  </div>
+                </div>
+
+              )}
+            </div>
           </div>
         </Parallax>
         <div ref={refAbout} className="z-10 pt-12 w-full max-w-5xl items-center justify-center font-mono text-sm">
