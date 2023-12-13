@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image'
 import fs from 'fs'
 import path from 'path'
 import { motion } from 'framer-motion';
@@ -36,6 +37,7 @@ const variants = {
   // ],
 
 export default function Home({ data }) {
+  console.log(data)
   const { ref: refAbout, inView: inViewAbout } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -54,6 +56,7 @@ export default function Home({ data }) {
     triggerOnce: true,
     threshold: 0.1,
   });
+
   const jsonSchema = {
     "@context": "http://schema.org",
     "@type": "ProfessionalService",
@@ -95,7 +98,7 @@ export default function Home({ data }) {
       }
     ],
     "makesOffer": (data) => 
-      data.map( card => ({
+      data.cards.map( card => ({
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
@@ -125,6 +128,7 @@ export default function Home({ data }) {
   }
 
   const image1 = "/images/frest2.png";
+
   return (
     <>
       <Head>
@@ -132,9 +136,10 @@ export default function Home({ data }) {
         <meta name="description" content="Web development & marketing agency serving clients in Perth and interstate." />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonSchema) }} />
       </Head>
-      <main className="flex flex-col min-h-screen bg-white items-center justify-start pt-28 md:pt-20 p-4 sm:p-6 md:p-8 lg:p-12 lg:py-0 xl:p-28 bg-transparent text-black">
-        <Parallax bgImage={image1} strength={500}>
-          <div className="flex flex-col hero md:flex-row justify-center font-extrabold my-0 h-screen bg-white text-black mt-8 md:mt-0"
+      {/* pt-28 md:pt-20 p-4 sm:p-6 md:p-8 lg:p-12 lg:py-0 xl:p-28*/}
+      <main className="flex flex-col min-h-screen bg-white items-center justify-start relative top-0 bg-transparent text-black">
+        {/* <Parallax bgImage={image1} strength={500}> */}
+          <div className="flex flex-col hero  font-extrabold my-0 h-screen bg-white text-black pt-28 md:pt-20 p-4 sm:p-6 md:p-8 lg:p-12 lg:py-0 xl:p-28"
             style={{
               backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('/images/frest2.png')",
               backgroundPosition: 'center',
@@ -143,10 +148,9 @@ export default function Home({ data }) {
               backgroundAttachment: 'fixed',
               height: '120vh',
               width: '100vw',
-              marginTop: '-200px',
             }}
           >
-            <h1 className='text-3xl md:text-5xl text-center relative top-[20%] max-h-[4rem] text-black'>
+            <h1 className='text-3xl md:text-5xl text-center max-h-[4rem] text-black'>
               <motion.span
                 style={{
                   fontFamily: "'Poppins', sans-serif",
@@ -168,23 +172,24 @@ export default function Home({ data }) {
               </motion.span>
             </h1>
             <div className='cards-container flex flex-row flex-wrap justify-center'>
-              {data.map( card => 
-                <div className='w-full md:w-1/2'>
+              {data.cards.map( card => 
+                <div className='w-full md:w-[40%] flex flex-row mt-24'>
                   <Image 
                     src={card.serviceImg}
+                    className='h-[100%] w-1/3 px-4 py-2 fill-black'
                     height={100}
                     width={100}
                   />
-                  <div className='card-text'>
+                  <div className='card-text h-full w-2/3'>
                     <h3>{card.title}</h3>
-                    <p>{card.description}</p>
+                    <p className='text-md'>{card.description}</p>
                   </div>
                 </div>
 
               )}
             </div>
           </div>
-        </Parallax>
+        {/* </Parallax> */}
         <div ref={refAbout} className="z-10 pt-12 w-full max-w-5xl items-center justify-center font-mono text-sm">
           <motion.div className="about mb-8"
             initial="hidden"

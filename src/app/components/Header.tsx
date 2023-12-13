@@ -61,7 +61,7 @@ export default function Header() {
   };
 
   return (
-    <header className={`fixed top-0 right-0 bg-transparent p-4 md:p-8 w-full z-10`}>
+    <header className={`fixed top-0 bg-transparent p-4 md:p-8 w-full z-10`}>
     <div className="flex items-center justify-between w-full">
       <Logo className="w-12 h-12 md:w-16 md:h-16 object-contain" isScrolled={isScrolled} />
       <div className="md:flex items-center">
