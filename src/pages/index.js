@@ -12,29 +12,29 @@ const variants = {
 };
 
 
-  // "aggregateRating": {
-  //   "@type": "AggregateRating",
-  //   "ratingValue": "Your Agency Rating",
-  //   "reviewCount": "Number of Reviews"
-  // },
-  // "review": [
-  //   {
-  //     "@type": "Review",
-  //     "author": {
-  //       "@type": "Person",
-  //       "name": "Reviewer's Name"
-  //     },
-  //     "datePublished": "Review Date",
-  //     "description": "Review Description",
-  //     "reviewRating": {
-  //       "@type": "Rating",
-  //       "bestRating": "5",
-  //       "worstRating": "1",
-  //       "ratingValue": "Rating Given By Reviewer"
-  //     }
-  //   }
-  //   // ... Add more reviews as needed
-  // ],
+// "aggregateRating": {
+//   "@type": "AggregateRating",
+//   "ratingValue": "Your Agency Rating",
+//   "reviewCount": "Number of Reviews"
+// },
+// "review": [
+//   {
+//     "@type": "Review",
+//     "author": {
+//       "@type": "Person",
+//       "name": "Reviewer's Name"
+//     },
+//     "datePublished": "Review Date",
+//     "description": "Review Description",
+//     "reviewRating": {
+//       "@type": "Rating",
+//       "bestRating": "5",
+//       "worstRating": "1",
+//       "ratingValue": "Rating Given By Reviewer"
+//     }
+//   }
+//   // ... Add more reviews as needed
+// ],
 
 export default function Home({ data }) {
   console.log(data)
@@ -97,15 +97,15 @@ export default function Home({ data }) {
         "worksFor": "Your Agency Name"
       }
     ],
-    "makesOffer": (data) => 
-      data.cards.map( card => ({
+    "makesOffer": (data) =>
+      data.cards.map(card => ({
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
           "name": card.title,
           "description": card.description
         },
-        "logo":`https://ordinaryagency.com.au${card.serviceImg}`,
+        "logo": `https://ordinaryagency.com.au${card.serviceImg}`,
         "areaServed": [
           {
             "@type": "City",
@@ -128,6 +128,24 @@ export default function Home({ data }) {
   }
 
   const image1 = "/images/frest2.png";
+  const ServiceCards = () =>
+    <div className='cards-container flex flex-row flex-wrap justify-center'>
+      {data.cards.map(card =>
+        <div className='w-full md:w-[40%] flex flex-row mt-24'>
+          <Image
+            src={card.serviceImg}
+            className='h-[100%] min-w-1/3 px-4 py-2 fill-black'
+            width={100}
+            height={100}
+          />
+          <div className='card-text h-full w-2/3 flex flex-col justify-start'>
+            <h3>{card.title}</h3>
+            <p className='text-md'>{card.description}</p>
+          </div>
+        </div>
+
+      )}
+    </div>;
 
   return (
     <>
@@ -137,60 +155,45 @@ export default function Home({ data }) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonSchema) }} />
       </Head>
       {/* pt-28 md:pt-20 p-4 sm:p-6 md:p-8 lg:p-12 lg:py-0 xl:p-28*/}
-      <main className="flex flex-col min-h-screen bg-white items-center justify-start relative top-0 bg-transparent text-black">
+      <main id="home" className="flex flex-col min-h-screen bg-white items-center justify-start relative top-0 bg-transparent text-black">
         {/* <Parallax bgImage={image1} strength={500}> */}
-          <div className="flex flex-col hero  font-extrabold my-0 h-screen bg-white text-black pt-28 md:pt-20 p-4 sm:p-6 md:p-8 lg:p-12 lg:py-0 xl:p-28"
-            style={{
-              backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('/images/frest2.png')",
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
-              backgroundAttachment: 'fixed',
-              height: '120vh',
-              width: '100vw',
-            }}
-          >
-            <h1 className='text-3xl md:text-5xl text-center max-h-[4rem] text-black'>
-              <motion.span
-                style={{
-                  fontFamily: "'Poppins', sans-serif",
-                  paddingRight: '5px',
-                }}
-                initial={{ opacity: 0, x: -100 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1 }}
-              >
-                Experience the New Standard
-              </motion.span>
-              <motion.span
-                style={{ fontFamily: "'Poppins', sans-serif" }}
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1 }}
-              >
-                in Digital Enterprise
-              </motion.span>
-            </h1>
-            <div className='cards-container flex flex-row flex-wrap justify-center'>
-              {data.cards.map( card => 
-                <div className='w-full md:w-[40%] flex flex-row mt-24'>
-                  <Image 
-                    src={card.serviceImg}
-                    className='h-[100%] w-1/3 px-4 py-2 fill-black'
-                    height={100}
-                    width={100}
-                  />
-                  <div className='card-text h-full w-2/3'>
-                    <h3>{card.title}</h3>
-                    <p className='text-md'>{card.description}</p>
-                  </div>
-                </div>
+        <div className="flex flex-col hero  font-extrabold my-0 h-screen bg-white text-black pt-28 md:pt-20 p-4 sm:p-6 md:p-8 lg:p-12 lg:py-0 xl:p-28"
+          style={{
+            backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('/images/frest2.png')",
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'fixed',
+            height: '120vh',
+            width: '100vw',
+          }}
+        >
+          <h1 className='text-3xl md:text-7xl text-center max-h-[4rem] my-auto text-black'>
+            <motion.span
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                paddingRight: '5px',
+              }}
+              initial={{ opacity: 0, x: -100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+            >
+              Anything but
+            </motion.span>
+            <motion.span
+              style={{ fontFamily: "'Poppins', sans-serif" }}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+            >
+              Ordinary
+            </motion.span>
+          </h1>
 
-              )}
-            </div>
-          </div>
+        </div>
         {/* </Parallax> */}
         <div ref={refAbout} className="z-10 pt-12 w-full max-w-5xl items-center justify-center font-mono text-sm">
+          <ServiceCards />
           <motion.div className="about mb-8"
             initial="hidden"
             animate={inViewAbout ? 'visible' : 'hidden'}

@@ -15,9 +15,6 @@ export default function Layout({
 }) {
   return (
     <html lang="en">
-      <Head>
-
-      </Head>
     
       <body className={inter.className}><div id="my-root">{children}</div></body>
     </html>
